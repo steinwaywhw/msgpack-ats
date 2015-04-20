@@ -1,8 +1,17 @@
+%{#
+#ifndef __MSGPACK
+#define __MSGPACK
+#include "msgpack-c/include/msgpack.h"
+#endif
+%}
+
+
 //typedef struct msgpack_sbuffer {
 //    size_t size;
 //    char* data;
 //    size_t alloc;
 //} msgpack_sbuffer;
+staload "pack.sats"
 
 absvtype msgpack_sbuffer = $extype "msgpack_sbuffer *"
 assume msgpack_buffer = msgpack_sbuffer 
@@ -21,7 +30,7 @@ assume msgpack_buffer = msgpack_sbuffer
 //{
 //    return (msgpack_sbuffer*)calloc(1, sizeof(msgpack_sbuffer));
 //}
-fun msgpack_sbuffer_new (): msgpack_sbuffer = "mac#"
+fun msgpack_sbuffer_new (): msgpack_buffer = "mac#"
 
 
 //static inline void msgpack_sbuffer_free(msgpack_sbuffer* sbuf)
@@ -30,14 +39,14 @@ fun msgpack_sbuffer_new (): msgpack_sbuffer = "mac#"
 //    msgpack_sbuffer_destroy(sbuf);
 //    free(sbuf);
 //}
-fun msgpack_sbuffer_free (msgpack_sbuffer): void = "mac#"
+fun msgpack_sbuffer_free (msgpack_buffer): void = "mac#"
 
 //#ifndef MSGPACK_SBUFFER_INIT_SIZE
 //#define MSGPACK_SBUFFER_INIT_SIZE 8192
 //#endif
 
 // TODO: return result
-fun msgpack_sbuffer_write {l:addr | l>null} (buf: !msgpack_sbuffer, data: ptr l, len: size_t): int 
+fun msgpack_sbuffer_write {l:addr | l>null} (buf: !msgpack_buffer, data: ptr l, len: size_t): int = "mac#"
 //static inline int msgpack_sbuffer_write(void* data, const char* buf, size_t len)
 //{
 //    msgpack_sbuffer* sbuf = (msgpack_sbuffer*)data;
@@ -68,7 +77,7 @@ fun msgpack_sbuffer_write {l:addr | l>null} (buf: !msgpack_sbuffer, data: ptr l,
 //    return 0;
 //}
 
-fun msgpack_sbuffer_release (buf: !msgpack_sbuffer): [l:addr | l>null] ptr l = "mac#"
+fun msgpack_sbuffer_release (buf: !msgpack_buffer): [l:addr | l>null] ptr l = "mac#"
 //static inline char* msgpack_sbuffer_release(msgpack_sbuffer* sbuf)
 //{
 //    char* tmp = sbuf->data;
@@ -78,8 +87,26 @@ fun msgpack_sbuffer_release (buf: !msgpack_sbuffer): [l:addr | l>null] ptr l = "
 //    return tmp;
 //}
 
-fun msgpack_sbuffer_clear(buf: !msgpack_sbuffer): void = "mac#"
+fun msgpack_sbuffer_clear(buf: !msgpack_buffer): void = "mac#"
 //static inline void msgpack_sbuffer_clear(msgpack_sbuffer* sbuf)
 //{
 //    sbuf->size = 0;
 //}
+
+
+fun msgpack_sbuffer_buffer (buf: !msgpack_buffer): [l:addr | l>null] ptr l = "mac#"
+fun msgpack_sbuffer_size (buf: !msgpack_buffer): size_t = "mac#"
+
+%{#
+
+static inline size_t msgpack_sbuffer_size(msgpack_sbuffer* sbuf)
+{
+	return sbuf->size;
+}
+
+static inline char* msgpack_sbuffer_buffer(msgpack_sbuffer* sbuf) 
+{
+	return sbuf->data;
+}
+
+%}

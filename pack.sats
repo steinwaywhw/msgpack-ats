@@ -1,3 +1,13 @@
+%{#
+#ifndef __MSGPACK
+#define __MSGPACK
+#include "msgpack-c/include/msgpack.h"
+#endif
+%}
+
+
+staload "object.sats"
+
 
 absvtype msgpack_buffer = ptr
 
@@ -16,8 +26,8 @@ absvtype msgpack_packer = $extype "msgpack_packer *"
 //static msgpack_packer* msgpack_packer_new(void* data, msgpack_packer_write callback);
 //static void msgpack_packer_free(msgpack_packer* pk);
 
-fun msgpack_packer_new  (buffer: !msgpack_buffer, callback: msgpack_packer_write): msgpack_packer = "#mac"
-fun msgpack_packer_free (packer: msgpack_packer): void = "#mac"
+fun msgpack_packer_new  (buffer: !msgpack_buffer, callback: msgpack_packer_write): msgpack_packer = "mac#"
+fun msgpack_packer_free (packer: msgpack_packer): void = "mac#"
 
 //static int msgpack_pack_char(msgpack_packer* pk, char d);
 //static int msgpack_pack_signed_char(msgpack_packer* pk, signed char d);
@@ -71,53 +81,53 @@ fun msgpack_packer_free (packer: msgpack_packer): void = "#mac"
 
 //int msgpack_pack_object(msgpack_packer* pk, msgpack_object d);
 
-fun msgpack_pack_char                       (packer: !msgpack_packer, d: char):   int = "#mac"
-fun msgpack_pack_signed_char                (packer: !msgpack_packer, d: schar):  int = "#mac"
-fun msgpack_pack_short                      (packer: !msgpack_packer, d: sint):   int = "#mac"
-fun msgpack_pack_int                        (packer: !msgpack_packer, d: int):    int = "#mac"
-fun msgpack_pack_long                       (packer: !msgpack_packer, d: lint):   int = "#mac"
-fun msgpack_pack_long_long                  (packer: !msgpack_packer, d: llint):  int = "#mac"
-fun msgpack_pack_unsigned_char              (packer: !msgpack_packer, d: uchar):  int = "#mac"
-fun msgpack_pack_unsigned_short             (packer: !msgpack_packer, d: usint):  int = "#mac"
-fun msgpack_pack_unsigned_int               (packer: !msgpack_packer, d: uint):   int = "#mac"
-fun msgpack_pack_unsigned_long              (packer: !msgpack_packer, d: ulint):  int = "#mac"
-fun msgpack_pack_unsigned_long_long         (packer: !msgpack_packer, d: ullint): int = "#mac"
-fun msgpack_pack_uint8                      (packer: !msgpack_packer, d: uint8):  int = "#mac"
-fun msgpack_pack_uint16                     (packer: !msgpack_packer, d: uint16): int = "#mac"
-fun msgpack_pack_uint32                     (packer: !msgpack_packer, d: uint32): int = "#mac"
-fun msgpack_pack_uint64                     (packer: !msgpack_packer, d: uint64): int = "#mac"
-fun msgpack_pack_int8                       (packer: !msgpack_packer, d: int8):   int = "#mac"
-fun msgpack_pack_int16                      (packer: !msgpack_packer, d: int16):  int = "#mac"
-fun msgpack_pack_int32                      (packer: !msgpack_packer, d: int32):  int = "#mac"
-fun msgpack_pack_int64                      (packer: !msgpack_packer, d: int64):  int = "#mac"
-fun msgpack_pack_fix_uint8                  (packer: !msgpack_packer, d: uint8):  int = "#mac"
-fun msgpack_pack_fix_uint16                 (packer: !msgpack_packer, d: uint16): int = "#mac"
-fun msgpack_pack_fix_uint32                 (packer: !msgpack_packer, d: uint32): int = "#mac"
-fun msgpack_pack_fix_uint64                 (packer: !msgpack_packer, d: uint64): int = "#mac"
-fun msgpack_pack_fix_int8                   (packer: !msgpack_packer, d: int8):   int = "#mac"
-fun msgpack_pack_fix_int16                  (packer: !msgpack_packer, d: int16):  int = "#mac"
-fun msgpack_pack_fix_int32                  (packer: !msgpack_packer, d: int32):  int = "#mac"
-fun msgpack_pack_fix_int64                  (packer: !msgpack_packer, d: int64):  int = "#mac"
-fun msgpack_pack_float                      (packer: !msgpack_packer, d: float):  int = "#mac"
-fun msgpack_pack_double                     (packer: !msgpack_packer, d: double): int = "#mac"
-fun msgpack_pack_nil                        (packer: !msgpack_packer): int            = "#mac"
-fun msgpack_pack_true                       (packer: !msgpack_packer): int            = "#mac"
-fun msgpack_pack_false                      (packer: !msgpack_packer): int            = "#mac"
+fun msgpack_pack_char                       (packer: !msgpack_packer, d: char):   int = "mac#"
+fun msgpack_pack_signed_char                (packer: !msgpack_packer, d: schar):  int = "mac#"
+fun msgpack_pack_short                      (packer: !msgpack_packer, d: sint):   int = "mac#"
+fun msgpack_pack_int                        (packer: !msgpack_packer, d: int):    int = "mac#"
+fun msgpack_pack_long                       (packer: !msgpack_packer, d: lint):   int = "mac#"
+fun msgpack_pack_long_long                  (packer: !msgpack_packer, d: llint):  int = "mac#"
+fun msgpack_pack_unsigned_char              (packer: !msgpack_packer, d: uchar):  int = "mac#"
+fun msgpack_pack_unsigned_short             (packer: !msgpack_packer, d: usint):  int = "mac#"
+fun msgpack_pack_unsigned_int               (packer: !msgpack_packer, d: uint):   int = "mac#"
+fun msgpack_pack_unsigned_long              (packer: !msgpack_packer, d: ulint):  int = "mac#"
+fun msgpack_pack_unsigned_long_long         (packer: !msgpack_packer, d: ullint): int = "mac#"
+fun msgpack_pack_uint8                      (packer: !msgpack_packer, d: uint8):  int = "mac#"
+fun msgpack_pack_uint16                     (packer: !msgpack_packer, d: uint16): int = "mac#"
+fun msgpack_pack_uint32                     (packer: !msgpack_packer, d: uint32): int = "mac#"
+fun msgpack_pack_uint64                     (packer: !msgpack_packer, d: uint64): int = "mac#"
+fun msgpack_pack_int8                       (packer: !msgpack_packer, d: int8):   int = "mac#"
+fun msgpack_pack_int16                      (packer: !msgpack_packer, d: int16):  int = "mac#"
+fun msgpack_pack_int32                      (packer: !msgpack_packer, d: int32):  int = "mac#"
+fun msgpack_pack_int64                      (packer: !msgpack_packer, d: int64):  int = "mac#"
+fun msgpack_pack_fix_uint8                  (packer: !msgpack_packer, d: uint8):  int = "mac#"
+fun msgpack_pack_fix_uint16                 (packer: !msgpack_packer, d: uint16): int = "mac#"
+fun msgpack_pack_fix_uint32                 (packer: !msgpack_packer, d: uint32): int = "mac#"
+fun msgpack_pack_fix_uint64                 (packer: !msgpack_packer, d: uint64): int = "mac#"
+fun msgpack_pack_fix_int8                   (packer: !msgpack_packer, d: int8):   int = "mac#"
+fun msgpack_pack_fix_int16                  (packer: !msgpack_packer, d: int16):  int = "mac#"
+fun msgpack_pack_fix_int32                  (packer: !msgpack_packer, d: int32):  int = "mac#"
+fun msgpack_pack_fix_int64                  (packer: !msgpack_packer, d: int64):  int = "mac#"
+fun msgpack_pack_float                      (packer: !msgpack_packer, d: float):  int = "mac#"
+fun msgpack_pack_double                     (packer: !msgpack_packer, d: double): int = "mac#"
+fun msgpack_pack_nil                        (packer: !msgpack_packer): int            = "mac#"
+fun msgpack_pack_true                       (packer: !msgpack_packer): int            = "mac#"
+fun msgpack_pack_false                      (packer: !msgpack_packer): int            = "mac#"
 fun msgpack_pack_bool                       (packer: !msgpack_packer, d: bool):   int 
  
-fun msgpack_pack_array                      (packer: !msgpack_packer, n: size_t): int = "#mac"
-fun msgpack_pack_map                        (packer: !msgpack_packer, n: size_t): int = "#mac"
+fun msgpack_pack_array                      (packer: !msgpack_packer, n: size_t): int = "mac#"
+fun msgpack_pack_map                        (packer: !msgpack_packer, n: size_t): int = "mac#"
 
-fun msgpack_pack_str                        (packer: !msgpack_packer, n: size_t)             : int = "#mac"
-fun msgpack_pack_str_body                   (packer: !msgpack_packer, d: string, n: size_t)  : int = "#mac"
+fun msgpack_pack_str                        (packer: !msgpack_packer, n: size_t)             : int = "mac#"
+fun msgpack_pack_str_body                   (packer: !msgpack_packer, d: string, n: size_t)  : int = "mac#"
  
-fun msgpack_pack_bin                        (packer: !msgpack_packer, n: size_t)             : int = "#mac"
-fun msgpack_pack_bin_body {l:addr | l>null} (packer: !msgpack_packer, d: ptr l, n: size_t)   : int = "#mac"
+fun msgpack_pack_bin                        (packer: !msgpack_packer, n: size_t)             : int = "mac#"
+fun msgpack_pack_bin_body {l:addr | l>null} (packer: !msgpack_packer, d: ptr l, n: size_t)   : int = "mac#"
  
-fun msgpack_pack_ext                        (packer: !msgpack_packer, n: size_t, type: int8) : int = "#mac"
-fun msgpack_pack_ext_body {l:addr | l>null} (packer: !msgpack_packer, d: ptr l, n: size_t)   : int = "#mac"
+fun msgpack_pack_ext                        (packer: !msgpack_packer, n: size_t, type: int8) : int = "mac#"
+fun msgpack_pack_ext_body {l:addr | l>null} (packer: !msgpack_packer, d: ptr l, n: size_t)   : int = "mac#"
 
-fun msgpack_pack_object                     (packer: !msgpack_packer, d: msgpack_object)    : int = "#mac"
+fun msgpack_pack_object                     (packer: !msgpack_packer, d: msgpack_object)    : int = "mac#"
 
 
 //#define msgpack_pack_inline_func(name) \

@@ -1,3 +1,9 @@
+%{#
+#ifndef __MSGPACK
+#define __MSGPACK
+#include "msgpack-c/include/msgpack.h"
+#endif
+%}
 
 
 ///**
@@ -80,11 +86,11 @@ abst@ype msgpack_object = $extype "msgpack_object"
 
 //MSGPACK_DLLEXPORT
 //void msgpack_object_print(FILE* out, msgpack_object o);
-fun msgpack_object_print (out: FILEref, o: msgpack_object): void = "#mac"
+fun msgpack_object_print (out: FILEref, o: msgpack_object): void = "mac#"
 
 //MSGPACK_DLLEXPORT
 //bool msgpack_object_equal(const msgpack_object x, const msgpack_object y);
-fun msgpack_object_equal (x: msgpack_object, y: msgpack_object): bool = "#mac"
+fun msgpack_object_equal (x: msgpack_object, y: msgpack_object): bool = "mac#"
 
 
 ///** @} */
