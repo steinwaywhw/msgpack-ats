@@ -127,7 +127,7 @@ fun msgpack_pack_bin_body {l:addr | l>null} (packer: !msgpack_packer, d: ptr l, 
 fun msgpack_pack_ext                        (packer: !msgpack_packer, n: size_t, type: int8) : int = "mac#"
 fun msgpack_pack_ext_body {l:addr | l>null} (packer: !msgpack_packer, d: ptr l, n: size_t)   : int = "mac#"
 
-fun msgpack_pack_object                     (packer: !msgpack_packer, d: msgpack_object)    : int = "mac#"
+fun msgpack_pack_object                     (packer: !msgpack_packer, d: msgpack_object)     : int = "mac#"
 
 
 //#define msgpack_pack_inline_func(name) \

@@ -5,15 +5,16 @@
 #endif
 %}
 
+staload "pack.sats"
 
 //typedef struct msgpack_sbuffer {
 //    size_t size;
 //    char* data;
 //    size_t alloc;
 //} msgpack_sbuffer;
-staload "pack.sats"
 
 absvtype msgpack_sbuffer = $extype "msgpack_sbuffer *"
+
 assume msgpack_buffer = msgpack_sbuffer 
 
 //static inline void msgpack_sbuffer_init(msgpack_sbuffer* sbuf)
