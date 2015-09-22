@@ -34,7 +34,7 @@ implement main0 () = () where {
 	val obj = msgpack_unpacked_data (unpacked)
 
 	val _ = msgpack_object_print (stdout_ref, obj)
-	val _ = $extfcall (void, "puts", "END")
+	val _ = $extfcall (void, "puts", "\nEND")
 
 	val () = msgpack_unpacked_destroy unpacked
 	val () = msgpack_unpacker_free unpacker
